@@ -1,0 +1,47 @@
+.user__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.user__container input {
+  width: 15rem;
+  padding: 5px 10px;
+  margin: 10px 10px;
+}
+
+.user__container select {
+  padding: 5px 5px;
+  text-align: center;
+}
+.user__container-list {
+  display: flex;
+  width: 12rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid black;
+}
+
+.user__container-list h4 {
+  color: #fff;
+  font-size: 18px;
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+.user__container-list p {
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.user__container-list a:last-child {
+  color: blue;
+  font-size: 16px;
+  font-weight: bold;
+}
