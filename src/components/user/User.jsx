@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Mapresults from "../../containers/mapresults/Mapresults";
+import useFetch from "../../api/apiFetch";
 import "./user.css";
 
 const User = () => {
-  const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [error, setError] = useState("");
-
-  const fetchUsers = async () => {
-    try {
-      const response = await fetch("http://jsonplaceholder.typicode.com/users");
-      const data = await response.json();
-      if (!Array.isArray(data))
-        return setError("There was an error. Please try again");
-      console.log(data);
-      setUsers(data);
-      setError("");
-    } catch (err) {
-      setError(err, "There was an error. Please try again");
-    }
-  };
+  const [selectResults, setSelectResults] = useState([]);
+  const { users, error } = useFetch(
+    "http://jsonplaceholder.typicode.com/users"
+  );
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -36,54 +26,45 @@ const User = () => {
     }
   };
 
-  const handleSelect = () => {
-    const selecteUsers = users.sort((user) => {
-      console.log(Object.values(user));
-    });
+  const handleSelect = (e) => {
+    setSelectResults([]);
+    let select = e.target.value;
+
+    const selectResults = users.sort((a, b) =>
+      a[select] > b[select] ? 1 : -1
+    );
+    setSearchResults(selectResults);
   };
-  useEffect(() => {
-    fetchUsers();
-  }, []);
 
   return (
     <div className="user__container">
-      <div>
+      <div className="user__inputs">
         <input
           type="text"
           placeholder="Search..."
           value={searchTerm}
           onChange={(e) => handleSearch(e)}
         />
-        <select name="users" onChange={handleSelect}>
-          <option value="user">User</option>
-          <option value="username">Username</option>
-          <option value="email">Email</option>
-        </select>
+        <div>
+          <label className="user__label" htmlFor="users">
+            Sort By:{" "}
+          </label>
+          <select name="users" onChange={(e) => handleSelect(e)}>
+            <option value="name">Name</option>
+            <option value="username">Username</option>
+            <option value="email">Email</option>
+          </select>
+        </div>
       </div>
       {error && (
         <div>
           <p>{error}</p>
         </div>
       )}
-      {searchTerm.length < 1
-        ? users.map((user) => (
-            <div key={user.id} className="user__container-list">
-              <h4>{user.name}</h4>
-              <p>{user.username}</p>
-              <p>
-                <a href="#">{user.email}</a>
-              </p>
-            </div>
-          ))
-        : searchResults.map((user) => (
-            <div key={user.id} className="user__container-list">
-              <h4>{user.name}</h4>
-              <p>{user.username}</p>
-              <p>
-                <a href="#">{user.email}</a>
-              </p>
-            </div>
-          ))}
+      {searchTerm.length < 1 && selectResults.length < 1 && (
+        <Mapresults results={users} />
+      )}
+      {searchResults && <Mapresults results={searchResults} />}
     </div>
   );
 };

@@ -1,0 +1,13 @@
+.mapresults__a {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 30%;
+}
+
+@media screen and (max-width: 750px) {
+  .mapresults__a {
+    width: 100%;
+    padding: 0 1rem;
+  }
+}

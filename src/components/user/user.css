@@ -4,6 +4,15 @@
   align-items: center;
   flex-direction: column;
   padding-left: 10px;
+  padding-bottom: 10px;
+}
+a {
+  text-decoration: none;
+}
+.user__inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .user__container input {
@@ -12,36 +21,66 @@
   margin: 10px 10px;
 }
 
+.user__label {
+  color: #fff;
+}
 .user__container select {
   padding: 5px 5px;
   text-align: center;
 }
+
 .user__container-list {
   display: flex;
-  width: 12rem;
+  width: 90vw;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   text-align: left;
-  padding: 0.75rem 0;
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid black;
 }
 
 .user__container-list h4 {
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   padding-bottom: 5px;
   font-weight: bold;
 }
 
 .user__container-list p {
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.user__container-list p:last-child {
+  color: blue;
+  font-size: 18px;
   font-weight: bold;
 }
 
-.user__container-list a:last-child {
-  color: blue;
-  font-size: 16px;
-  font-weight: bold;
+@media screen and (max-width: 750px) {
+  .user__container {
+    margin: 1rem 20px;
+  }
+
+  .user__container .user__inputs {
+    flex-direction: column;
+    padding-top: 10px;
+    font-size: 20px;
+  }
+  .user__inputs select {
+    margin-top: 10px;
+  }
+  .user__container-list h4 {
+    font-size: 26px;
+  }
+  .user__container-list p,
+  .user__container-list a:last-child {
+    font-size: 24px;
+  }
+  a {
+    width: 100vw;
+  }
 }
