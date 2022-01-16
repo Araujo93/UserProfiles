@@ -13,9 +13,7 @@ const UserProfile = () => {
 
   const formatAddress = () => {
     if (user.address) {
-      console.log("hello");
       const { suite, street, city, zipcode } = user.address;
-      console.log(suite);
       return (
         <>
           <p className="section__margin">

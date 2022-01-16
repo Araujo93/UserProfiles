@@ -62,10 +62,11 @@ const User = () => {
           <p>{error}</p>
         </div>
       )}
-      {searchTerm.length < 1 && selectResults.length < 1 && (
+      {searchTerm.length < 1 ? (
         <Mapresults results={users} />
+      ) : (
+        <Mapresults results={searchResults} />
       )}
-      {searchResults && <Mapresults results={searchResults} />}
     </div>
   );
 };
