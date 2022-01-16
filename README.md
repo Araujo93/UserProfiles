@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-When you first clone he repo you will need to run npm install the download the neccesary dependencies.
+When you first clone he repo you will need to run npm install the download the necessary dependencies.
 
 ## Available Scripts
 
