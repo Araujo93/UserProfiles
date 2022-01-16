@@ -28,6 +28,7 @@ const User = () => {
 
   const handleSelect = (e) => {
     setSelectResults([]);
+    setSearchTerm("");
     let select = e.target.value;
 
     const selectResults = users.sort((a, b) =>
